@@ -40,6 +40,11 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    /*
+        This layout makes use of animate scroll to item.
+        If it doesn't delay starting the scroll then the scroll is cancelled (by the bring into view of the focused item)
+        We can't rely on bring into view as we actually want to bring the row + its title into view not just the row.
+     */
     @Composable
     private fun ScrollingLayoutWithAnimateToScroll() {
         val lazyColumnListState = rememberLazyListState()
@@ -93,6 +98,11 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+
+    /*
+        This layout relies on bring into view.
+        As we can see when going up the page the row is brought into view but the title is off screen.
+     */
     @Composable
     private fun BaseScrollingLayout() {
         val lazyColumnListState = rememberLazyListState()
